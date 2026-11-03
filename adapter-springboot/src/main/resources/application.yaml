@@ -1,0 +1,28 @@
+app:
+  auth:
+    mode: ${APP_AUTH_MODE:jwt}
+spring:
+  application:
+    name: james-experimental
+  datasource:
+    url: ${ACTIVATION_JDBC:jdbc:postgresql://127.0.0.1:55432/postgres?currentSchema=james_activation}
+    username: ${ACTIVATION_DB_USER:nobody}
+    password: ${ACTIVATION_DB_PASSWORD:}
+  flyway:
+    enabled: true
+    baseline-on-migrate: false
+    locations: classpath:db/migration
+  lifecycle:
+    timeout-per-shutdown-phase: 15s
+server:
+  address: ${SERVER_ADDRESS:127.0.0.1}
+  port: ${SERVER_PORT:18081}
+  shutdown: graceful
+  tomcat:
+    threads:
+      max: 100
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

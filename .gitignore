@@ -1,0 +1,12 @@
+/build/
+/.local/
+/logs/*.log
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
+*.class
+*.pyc
+__pycache__/
+
+# Never commit simulator build products
+simulator/build/
