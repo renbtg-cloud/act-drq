@@ -1,5 +1,7 @@
 # James — Asynchronous fault-tolerant product activation
 
+**Backend-agnostic activation workers.** The worker processing logic, durable business-state transitions, retry/reconciliation, and provider integration are shared across delivery backends. A `DeliveryBackend` abstraction isolates transport-specific message claiming, consumption and acknowledgment: **RabbitMQ and PostgreSQL are the first two concrete implementations, not fixed architectural dependencies**. RabbitMQ is the default and more extensively validated backend; the PostgreSQL-only alternative has passed local integration and concurrency tests but has received substantially less adversarial testing.
+
 An asynchronous product-activation service with durable admission, asynchronous provider delivery, idempotency, retry/reconciliation, OAuth2/JWT authentication, and independently runnable load and provider simulators.
 
 The three cooperating components are:
@@ -16,7 +18,7 @@ The three cooperating components are:
 | --- | --- |
 | `core/` | Request admission, JSON contracts and policy |
 | `store-postgres/` | Durable state, idempotency, dispatch records and outbox |
-| `runtime-rabbit/` | Asynchronous workers, selectable RabbitMQ/PostgreSQL delivery, provider client, reconciliation (historical directory name) |
+| `runtime-delivery/` | Backend-agnostic worker orchestration and shared provider processing, with RabbitMQ and PostgreSQL delivery adapters |
 | `adapter-springboot/` | HTTP API, OAuth2 resource server, Flyway migrations |
 | `provider/` | Independent SQLite-backed HTTP provider simulator |
 | `simulator/` | Workload runner, host coordination, evidence verification and reporting |

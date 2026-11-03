@@ -279,7 +279,7 @@ def run():
         print('BLOCKED: real Spring Boot executable JAR not found; compile with Maven in a networked environment. No stand-ins accepted.',flush=True)
         return 3
     if ARGS.mode=='legacy':
-        if not (ROOT/'build/dist/runtime-rabbit.jar').exists():subprocess.run([str(ROOT/'scripts/build.sh')],check=True)
+        if not (ROOT/'build/dist/runtime-delivery.jar').exists():subprocess.run([str(ROOT/'scripts/build.sh')],check=True)
         cp=subprocess.check_output([str(ROOT/'scripts/print-classpath.sh')],text=True).strip()
     else:cp=None
     sql('CREATE SCHEMA '+SCHEMA)

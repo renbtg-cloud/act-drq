@@ -28,9 +28,9 @@ compile adapter-httpjdk "$CORE"
 mkdir -p "$BUILD/modules/lab-slf4j-shim"
 javac -encoding UTF-8 -d "$BUILD/modules/lab-slf4j-shim" "$ROOT"/lab/slf4j-test-only/org/slf4j/*.java
 jar --create --file "$SHIM" -C "$BUILD/modules/lab-slf4j-shim" .
-compile runtime-rabbit "$CORE:$STORE:$ADAPTER:$SHIM:$PGJAR:$AMQPJAR"
+compile runtime-delivery "$CORE:$STORE:$ADAPTER:$SHIM:$PGJAR:$AMQPJAR"
 compile lab-java-providers "$PGJAR"
-for name in core store-postgres adapter-httpjdk lab-slf4j-shim runtime-rabbit lab-java-providers; do
+for name in core store-postgres adapter-httpjdk lab-slf4j-shim runtime-delivery lab-java-providers; do
   cp -a "$BUILD/modules/$name/." "$BUILD/classes/"
 done
 printf 'Built %s (separate jars with enforced compile-time dependencies)\n' "$BUILD/dist"

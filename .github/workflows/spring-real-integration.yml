@@ -7,7 +7,7 @@ on:
       - 'core/**'
       - 'store-postgres/**'
       - 'adapter-httpjdk/**'
-      - 'runtime-rabbit/**'
+      - 'runtime-delivery/**'
       - 'provider/**'
       - 'simulator/**'
       - 'tests/**'

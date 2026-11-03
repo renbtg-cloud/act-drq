@@ -24,7 +24,7 @@
      <source>${project.basedir}/../core/src/main/java</source>
      <source>${project.basedir}/../store-postgres/src/main/java</source>
      <source>${project.basedir}/../adapter-httpjdk/src/main/java</source>
-     <source>${project.basedir}/../runtime-rabbit/src/main/java</source>
+     <source>${project.basedir}/../runtime-delivery/src/main/java</source>
     </sources></configuration>
    </execution></executions>
   </plugin>
